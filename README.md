@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# latam-challenge
-=======
 ## Explicaciones generales están en notebook challenge
 
 
