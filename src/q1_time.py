@@ -6,10 +6,10 @@ from utils import custom_profilers, custom_extractors
 import json
 
 
-#@custom_profilers.memory_profiler
+@custom_profilers.memory_profiler
 @custom_profilers.exec_time_profiler
-
 def q1_time(file_path: str) -> List[Tuple[datetime.date, str]]:
+    
     date_counts = defaultdict(int)
     user_counts = defaultdict(lambda: defaultdict(int))
 

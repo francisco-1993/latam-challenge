@@ -4,6 +4,7 @@ from collections import defaultdict
 from utils import custom_profilers
 from heapq import nlargest
 import jsonlines
+import json
 
 '''
     Acotaciones:
@@ -18,14 +19,16 @@ import jsonlines
 
 '''
 
-#@custom_profilers.exec_time_profiler
+
 @custom_profilers.memory_profiler
+#@custom_profilers.exec_time_profiler
 def q1_memory(file_path: str) -> List[Tuple[datetime.date, str]]:
 
     #{date: {username: tweets_count}} -> registros de todos los username con respectivas menciones (tweet_count) para cada date
     date_counts =  defaultdict(lambda: defaultdict(int)) 
     top_dates = []
-    with jsonlines.open(file_path) as file: 
+
+    with jsonlines.open(file_path) as file:     
 
         for tweet in file:
             date = datetime.strptime(tweet['date'][:10],'%Y-%m-%d').date() 
@@ -38,4 +41,5 @@ def q1_memory(file_path: str) -> List[Tuple[datetime.date, str]]:
 
     #[(date, username)] --> para el top_dates, se toma para cada date el username con mas tweet_count
     result = [(date, max(users.items(), key=lambda x: x[1])[0]) for date, users in top_dates]
+    
     return result

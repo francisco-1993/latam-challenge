@@ -5,7 +5,7 @@ import jsonlines
 
 
 @custom_profilers.memory_profiler
-#@custom_profilers.exec_time_profiler
+@custom_profilers.exec_time_profiler
 def q3_memory(file_path: str) -> List[Tuple[str, int]]:
     
     mention_counts = Counter()

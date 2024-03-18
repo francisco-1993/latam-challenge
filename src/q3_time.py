@@ -4,7 +4,7 @@ from utils import custom_profilers, custom_extractors
 import jsonlines
 
 
-#@custom_profilers.memory_profiler
+@custom_profilers.memory_profiler
 @custom_profilers.exec_time_profiler
 def q3_time(file_path: str) -> List[Tuple[str, int]]:
     

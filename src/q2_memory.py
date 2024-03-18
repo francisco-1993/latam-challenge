@@ -12,9 +12,11 @@ import re
         - Se opto por un lista comprensiva manejada de los patrones de emojis antes de librerias como "emoji" por el overhead inncesario que creo pueden agregar
 
 '''
+
 @custom_profilers.memory_profiler
-#@custom_profilers.exec_time_profiler
+@custom_profilers.exec_time_profiler
 def q2_memory(file_path: str) -> List[Tuple[str, int]]:
+    
     emoji_pattern = re.compile("["
         u"\U0001F600-\U0001F64F"  # emoticons
         u"\U0001F300-\U0001F5FF"  # symbols & pictographs
