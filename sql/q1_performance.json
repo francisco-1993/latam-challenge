@@ -1,0 +1,8 @@
+{
+    "query": "SELECT\n  DATE(date) AS tweet_date,\n  username,\n  COUNT(1) AS tweet_count\nFROM\n  `data-challenge-latam.dataset_challenge_latam.table_challenge_latam`\nGROUP BY\n  tweet_date,\n  username\nORDER BY\n  tweet_count DESC\nLIMIT\n  10;",
+    "total_bytes_processed": "5.36 MB",
+    "total_bytes_billed": "10.00 MB",
+    "billing_tier": 1,
+    "cache_hit": false,
+    "query_time": "0:00:00.498000"
+}

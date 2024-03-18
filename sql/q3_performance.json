@@ -1,0 +1,8 @@
+{
+    "query": "WITH user_mentions AS (\n  SELECT\n    username AS mentioned_username\n  FROM \n    `data-challenge-latam.dataset_challenge_latam.table_challenge_latam`\n    ,UNNEST(mentioned_usernames) AS username\n)\nSELECT\n  mentioned_username,\n  COUNT(1) AS mention_count\nFROM user_mentions\nGROUP BY 1\nORDER BY mention_count DESC\nLIMIT 10",
+    "total_bytes_processed": "0.00 MB",
+    "total_bytes_billed": "0.00 MB",
+    "billing_tier": 0,
+    "cache_hit": false,
+    "query_time": "0:00:00.277000"
+}

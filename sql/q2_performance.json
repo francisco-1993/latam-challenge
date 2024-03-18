@@ -1,0 +1,8 @@
+{
+    "query": "WITH EMOJIS AS (\n  SELECT\n    content\n  FROM \n    `data-challenge-latam.dataset_challenge_latam.table_challenge_latam` \n    ,UNNEST(REGEXP_EXTRACT_ALL(content, r'[\\\\U0001F600-\\\\U0001F64F]|[\\\\U0001F300-\\\\U0001F5FF]|[\\\\U0001F680-\\\\U0001F6FF]|[\\\\U0001F1E0-\\\\U0001F1FF]|[\\\\U0001F90D-\\\\U0001F9FF]')) AS emoji\n)\nSELECT\n  content\n  ,COUNT(1) AS emoji_count\nFROM EMOJIS\nGROUP BY 1\nORDER BY emoji_count DESC\nLIMIT 10",
+    "total_bytes_processed": "38.47 MB",
+    "total_bytes_billed": "39.00 MB",
+    "billing_tier": 1,
+    "cache_hit": false,
+    "query_time": "0:00:02.155000"
+}
