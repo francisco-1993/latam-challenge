@@ -1,0 +1,19 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# Checkpoint files for Jupyter notebooks
+.ipynb_checkpoints/
+
+# Environment directories
+venv*/
+
+# Compiled Python files
+*.pyc
+
+# IDE-specific files
+.vscode/
+
+# Ignore specific folders
+data/
+keys/
