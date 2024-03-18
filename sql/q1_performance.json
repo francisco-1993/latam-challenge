@@ -1,8 +1,8 @@
 {
-    "query": "SELECT\n  DATE(date) AS tweet_date,\n  username,\n  COUNT(1) AS tweet_count\nFROM\n  `data-challenge-latam.dataset_challenge_latam.table_challenge_latam`\nGROUP BY\n  tweet_date,\n  username\nORDER BY\n  tweet_count DESC\nLIMIT\n  10;",
-    "total_bytes_processed": "5.36 MB",
-    "total_bytes_billed": "10.00 MB",
-    "billing_tier": 1,
+    "query": "WITH\n  TOP_DATES AS (\n\n  SELECT\n    DATE(date) AS date,\n    COUNT(1) AS total_tweets\n  FROM\n    `data-challenge-latam.dataset_challenge_de_latam.table_challenge_de_latam` \n  GROUP BY\n    date\n  ORDER BY\n    total_tweets DESC\n  LIMIT\n    10 ),\n\n  USER_TWEETS AS (\n\n  SELECT\n    DATE(t.date) AS date,\n    t.username,\n    COUNT(1) AS tweet_count\n  FROM\n        `data-challenge-latam.dataset_challenge_de_latam.table_challenge_de_latam` t\n  INNER JOIN\n    TOP_DATES td\n  ON\n    DATE(t.date) = td.date\n  GROUP BY\n    date,\n    username \n  )\nSELECT\n  ut.date,\n  ut.username AS top_user\nFROM\n  USER_TWEETS ut\nINNER JOIN (\n  SELECT\n    date,\n    MAX(tweet_count) AS max_tweet_count\n  FROM\n    USER_TWEETS\n  GROUP BY\n    date ) max_ut\nON\n  ut.date = max_ut.date\n  AND ut.tweet_count = max_ut.max_tweet_count\n",
+    "total_bytes_processed": "0.00 MB",
+    "total_bytes_billed": "0.00 MB",
+    "billing_tier": 0,
     "cache_hit": false,
-    "query_time": "0:00:00.498000"
+    "query_time": "0:00:01.483000"
 }

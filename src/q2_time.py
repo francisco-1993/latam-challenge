@@ -1,5 +1,5 @@
 from typing import List, Tuple
-from collections import defaultdict
+from collections import Counter
 from utils import custom_profilers, custom_extractors
 import jsonlines
 import re
@@ -28,7 +28,7 @@ def q2_time(file_path: str) -> List[Tuple[str, int]]:
         u"\ufe0f"
     "]+", flags=re.UNICODE)
 
-    emoji_counts = defaultdict(int)
+    emoji_counts = Counter()
 
     for tweet in custom_extractors.buffered_reader(file_path, buffer_size=1024*1000*20):      
         emojis = emoji_pattern.findall(tweet['content'])

@@ -1,6 +1,6 @@
 from typing import List, Tuple
 from datetime import datetime
-from collections import defaultdict
+from collections import defaultdict, deque
 from utils import custom_profilers
 from heapq import nlargest
 import jsonlines
@@ -21,12 +21,12 @@ import json
 
 
 @custom_profilers.memory_profiler
-#@custom_profilers.exec_time_profiler
+@custom_profilers.exec_time_profiler
 def q1_memory(file_path: str) -> List[Tuple[datetime.date, str]]:
 
     #{date: {username: tweets_count}} -> registros de todos los username con respectivas menciones (tweet_count) para cada date
-    date_counts =  defaultdict(lambda: defaultdict(int)) 
-    top_dates = []
+    date_counts = defaultdict(lambda: defaultdict(int)) 
+    top_dates = deque()
 
     with jsonlines.open(file_path) as file:     
 

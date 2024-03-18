@@ -1,7 +1,6 @@
 from typing import List, Tuple
 from collections import Counter, deque
 from utils import custom_profilers, custom_extractors
-import jsonlines
 
 
 @custom_profilers.memory_profiler
