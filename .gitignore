@@ -16,3 +16,4 @@ venv*/
 
 # Ignore specific folders
 data/
+keys/
