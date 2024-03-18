@@ -17,10 +17,10 @@ def exec_time_profiler(func: Callable) -> Callable:
         return result
     return wrapper
 
-def memory_profiler(func: Callable) -> Callable:
+def memory_profiler(func: Callable, dir_path:str='memory_tracks_files/') -> Callable:
     @wraps(func)
     def wrapper(*args, **kwargs):
-        directory='memory_tracks_files/'
+        directory=dir_path
         if not os.path.exists(directory):
             os.makedirs(directory)
         with Tracker(destination=FileDestination(f'{directory}{func.__name__}.bin', overwrite=True)):
